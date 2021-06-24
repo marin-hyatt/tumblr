@@ -60,7 +60,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="photoView" destination="KFl-t0-2ny" id="Ou6-kL-Qu7"/>
-                                            <segue destination="4mc-By-9Q1" kind="show" trigger="accessoryAction" id="gaC-zV-oQP"/>
+                                            <segue destination="4mc-By-9Q1" kind="show" id="z80-cQ-MK2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

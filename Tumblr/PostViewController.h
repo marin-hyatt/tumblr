@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PostViewController : UIViewController
+@property (nonatomic, strong) NSDictionary *post;
 
 @end
 

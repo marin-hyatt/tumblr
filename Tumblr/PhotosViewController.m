@@ -8,6 +8,7 @@
 #import "PhotosViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "PhotoCell.h"
+#import "PostViewController.h"
 
 @interface PhotosViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *posts;
@@ -90,9 +91,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-//    sender:(id)sender{
-//
-//    }
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.photosView indexPathForCell:tappedCell];
+    NSDictionary *post = self.posts[indexPath.row];
+    
 }
 
 
