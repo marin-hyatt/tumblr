@@ -47,6 +47,9 @@
                 [self.photosView reloadData];
             }
         }];
+    
+    //Sets row height
+    self.photosView.rowHeight = 240;
     [task resume];
 }
 
@@ -63,8 +66,28 @@
 */
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"This is row %ld", (long)indexPath.row];
+    PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
+    
+    //Get the corresponding post
+    NSDictionary *post = self.posts[indexPath.row];
+    NSArray *photos = post[@"photos"];
+    if (photos) {
+        // 1. Get the first photo in the photos array
+        NSDictionary *photo = photos[0];
+
+        // 2. Get the original size dictionary from the photo
+        NSDictionary *originalSize =  photo[@"original_size"];
+
+        // 3. Get the url string from the original size dictionary
+        NSString *urlString = originalSize[@"url"];
+
+        // 4. Create a URL using the urlString
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        [cell.photoView setImageWithURL:url];
+    }
+    
+//    cell.textLabel.text = [NSString stringWithFormat:@"This is row %ld", (long)indexPath.row];
     return cell;
 }
 
